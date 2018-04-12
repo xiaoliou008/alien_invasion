@@ -3,6 +3,7 @@ import pygame
 
 from settings import Settings
 from ship import Ship
+import game_functions as gf
 
 def run_game():
     # initialize the game and creat a screen object
@@ -18,15 +19,9 @@ def run_game():
     # begin the main loop of the game
     while True:
         # supervise keyboard and mouse event
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-
+        gf.check_event()
         # plot the screen again in every loop
-        screen.fill(ai_settings.bg_color)
-        ship.blitme()
-
         # make the screen lately plotted visiable
-        pygame.display.flip()
-
+        gf.update_screen(ai_settings, screen, ship)
+        
 run_game()
